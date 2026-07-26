@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/rknoplock/gitops-knoplock.git
+    repoURL: https://github.com/rknoplock/IDP.git
     targetRevision: main
     path: charts/payment-processor
     helm:
