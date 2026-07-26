@@ -11,10 +11,13 @@ spec:
     path: charts/kafka-producer
     helm:
       parameters:
-        - name: replicaCount
-          value: "1"
-        - name: PRODUCE_INTERVAL_SECONDS
-          value: "50"
+        env:
+          - name: KAFKA_BOOTSTRAP_SERVERS
+            value: "lab-kafka-kafka-bootstrap:9092"
+          - name: KAFKA_TOPIC
+            value: "pedidos"
+          - name: PRODUCE_INTERVAL_SECONDS
+            value: "50"
   destination:
     server: https://kubernetes.default.svc
     namespace: kafka
