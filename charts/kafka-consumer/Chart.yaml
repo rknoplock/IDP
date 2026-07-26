@@ -1,0 +1,5 @@
+apiVersion: v2
+name: kafka-consumer
+description: Chart do consumidor de pedidos do Kafka lab
+version: 0.1.0
+appVersion: "1.0"

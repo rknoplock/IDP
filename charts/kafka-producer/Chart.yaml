@@ -1,0 +1,5 @@
+apiVersion: v2
+name: kafka-producer
+description: Chart do produtor de pedidos do Kafka lab
+version: 0.1.0
+appVersion: "2.0"

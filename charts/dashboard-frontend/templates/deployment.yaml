@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-dashboard-frontend
+  labels:
+    app: {{ .Release.Name }}-dashboard-frontend
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-dashboard-frontend
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-dashboard-frontend
+    spec:
+      containers:
+        - name: dashboard-frontend
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          ports:
+            - name: http
+              containerPort: 80
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}

@@ -1,0 +1,11 @@
+replicaCount: 1
+image:
+  repository: tchiotludo/akhq
+  tag: "latest"
+service:
+  type: ClusterIP
+  port: 8080
+kafka:
+  clusterName: lab-kafka
+  bootstrapServers: "lab-kafka-kafka-bootstrap:9092"
+resources: {}

@@ -1,0 +1,5 @@
+apiVersion: v2
+name: akhq
+description: Chart do AKHQ (UI de administração do Kafka) do Kafka lab
+version: 0.1.0
+appVersion: "latest"

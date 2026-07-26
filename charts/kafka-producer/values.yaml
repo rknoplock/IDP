@@ -1,0 +1,12 @@
+replicaCount: 1
+image:
+  repository: rknoplock/kafka-producer
+  tag: "2.0"
+env:
+  - name: KAFKA_BOOTSTRAP_SERVERS
+    value: "lab-kafka-kafka-bootstrap:9092"
+  - name: KAFKA_TOPIC
+    value: "pedidos"
+  - name: PRODUCE_INTERVAL_SECONDS
+    value: "10"
+resources: {}

@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: payment-processor
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/rknoplock/gitops-knoplock.git
+    targetRevision: main
+    path: charts/payment-processor
+    helm:
+      parameters:
+        - name: replicaCount
+          value: "1"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kafka
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

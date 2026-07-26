@@ -1,0 +1,5 @@
+apiVersion: v2
+name: dashboard-frontend
+description: Chart do frontend do dashboard do Kafka lab
+version: 0.1.0
+appVersion: "2.0"

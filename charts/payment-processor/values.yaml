@@ -1,0 +1,16 @@
+replicaCount: 1
+image:
+  repository: rknoplock/payment-processor
+  tag: "1.0"
+env:
+  - name: KAFKA_BOOTSTRAP_SERVERS
+    value: "lab-kafka-kafka-bootstrap:9092"
+  - name: INPUT_TOPIC
+    value: "pedidos"
+  - name: OUTPUT_TOPIC
+    value: "pagamentos"
+  - name: LIMITE_ANALISE
+    value: "2000"
+  - name: PROB_APROVACAO
+    value: "0.85"
+resources: {}
