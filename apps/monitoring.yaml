@@ -35,6 +35,12 @@ spec:
           # usuario admin / senha gerada, ver comando abaixo pra recuperar
           adminPassword: admin
 
+        # Docker Desktop nao suporta mount propagation shared/slave pra "/" do host,
+        # entao desabilita esse mount especifico do node-exporter (path / is mounted...)
+        prometheus-node-exporter:
+          hostRootFsMount:
+            enabled: false
+
         # ativa monitoramento automatico dos componentes do proprio cluster
         kubeControllerManager:
           enabled: false
