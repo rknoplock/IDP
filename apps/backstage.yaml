@@ -1,0 +1,45 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: backstage
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://backstage.github.io/charts
+    chart: backstage
+    targetRevision: "2.6.1"
+    helm:
+      values: |
+        backstage:
+          appConfig:
+            app:
+              title: IDP Portal
+              baseUrl: http://localhost:7007
+            backend:
+              baseUrl: http://localhost:7007
+              cors:
+                origin: http://localhost:7007
+              # sem banco externo por enquanto: usa SQLite em memoria (dados somem a cada restart)
+              database:
+                client: better-sqlite3
+                connection: ':memory:'
+
+        # sem persistencia / postgres por enquanto, igual decidimos pro monitoring
+        postgresql:
+          enabled: false
+
+        service:
+          type: ClusterIP
+          ports:
+            backend: 7007
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: backstage
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
