@@ -11,6 +11,9 @@ spec:
     path: charts/kafka-producer
     helm:
       parameters:
+        - name: replicaCount
+          value: "1"
+      values: |
         env:
           - name: KAFKA_BOOTSTRAP_SERVERS
             value: "lab-kafka-kafka-bootstrap:9092"
